@@ -1,0 +1,151 @@
+question,ideal_answer,topic,difficulty
+What is AI?,AI is the simulation of human intelligence in machines.,ai/ml,Easy
+What is ML?,ML is a subset of AI that learns from data.,ai/ml,Easy
+What is supervised learning?,Learning with labeled data.,ai/ml,Easy
+What is unsupervised learning?,Learning without labeled data.,ai/ml,Easy
+Define overfitting.,Overfitting is when a model learns noise in the training data.,ai/ml,Easy
+What is underfitting?,Underfitting is when a model fails to learn the data.,ai/ml,Easy
+What is a dataset?,A collection of data used for training or testing.,ai/ml,Easy
+What is a feature?,An individual measurable property of a phenomenon.,ai/ml,Easy
+What is a label?,The output variable for supervised learning.,ai/ml,Easy
+What is a model?,A mathematical representation of a real-world process.,ai/ml,Easy
+Explain bias-variance tradeoff.,It's the tradeoff between model complexity and accuracy.,ai/ml,Medium
+What is cross-validation?,Technique to evaluate ML models by training on subsets.,ai/ml,Medium
+What is a decision tree?,A tree structure used for decision making.,ai/ml,Medium
+What is an SVM?,Support Vector Machine is a supervised learning model.,ai/ml,Medium
+Define gradient descent.,An optimization algorithm to minimize loss.,ai/ml,Medium
+What is backpropagation?,Algorithm to train neural networks.,ai/ml,Medium
+What is regularization?,Technique to reduce overfitting by penalizing large weights.,ai/ml,Medium
+What is logistic regression?,A regression model for binary classification.,ai/ml,Medium
+What is clustering?,Grouping similar data points.,ai/ml,Medium
+What is a confusion matrix?,Matrix showing performance of a classification algorithm.,ai/ml,Medium
+Explain LSTM.,Long Short-Term Memory is a type of RNN.,ai/ml,Hard
+What is a GAN?,Generative Adversarial Network generates new data.,ai/ml,Hard
+Explain attention mechanism.,It helps models focus on relevant parts of input.,ai/ml,Hard
+What is reinforcement learning?,Learning through rewards and penalties.,ai/ml,Hard
+What is AUC-ROC?,Performance measurement for classification problems.,ai/ml,Hard
+Explain ensemble learning.,Combining multiple models to improve performance.,ai/ml,Hard
+What is transfer learning?,Using pretrained models for new tasks.,ai/ml,Hard
+What is dropout?,Regularization technique for neural networks.,ai/ml,Hard
+Explain hyperparameter tuning.,Choosing best parameters for a model.,ai/ml,Hard
+What are autoencoders?,Neural networks for learning efficient codings.,ai/ml,Hard
+What is data science?,Field that uses scientific methods to extract knowledge from data.,data science,Easy
+What is a histogram?,Bar graph representation of frequency distribution.,data science,Easy
+What is mean?,Average of a set of numbers.,data science,Easy
+What is median?,Middle value in a data set.,data science,Easy
+What is mode?,Most frequent value.,data science,Easy
+What is standard deviation?,Measure of spread in data.,data science,Easy
+What is variance?,Average of the squared differences from the mean.,data science,Easy
+What is correlation?,Measure of relationship between two variables.,data science,Easy
+What is data cleaning?,Process of fixing or removing incorrect data.,data science,Easy
+What is normalization?,Scaling data to a standard range.,data science,Easy
+What is linear regression?,Predicting a value using a linear function.,data science,Medium
+What is logistic regression?,Model used for binary classification.,data science,Medium
+What is hypothesis testing?,Procedure to test assumptions about a dataset.,data science,Medium
+What is a p-value?,Probability of obtaining test results at least as extreme.,data science,Medium
+What is t-test?,Test used to compare two means.,data science,Medium
+What is chi-square test?,Test to find association between categorical variables.,data science,Medium
+What is ANOVA?,Used to compare more than two groups.,data science,Medium
+What is PCA?,Principal Component Analysis reduces dimensionality.,data science,Medium
+What is EDA?,Exploratory Data Analysis summarizes main characteristics.,data science,Medium
+What is feature selection?,Selecting most important variables.,data science,Medium
+What is multicollinearity?,Independent variables are highly correlated.,data science,Hard
+Explain time series analysis.,Analyzing time-ordered data.,data science,Hard
+What is survival analysis?,Statistical method for analyzing expected duration.,data science,Hard
+Explain bootstrapping.,Resampling with replacement to estimate statistics.,data science,Hard
+What is cross-validation?,Technique to validate model on different data splits.,data science,Hard
+What is bagging?,Ensemble technique to improve model stability.,data science,Hard
+What is boosting?,Sequentially adding models to correct errors.,data science,Hard
+What is A/B testing?,Comparing two versions of a variable.,data science,Hard
+What is NLP?,Natural Language Processing deals with human language.,data science,Hard
+What is deep learning?,Subset of ML using neural networks with many layers.,data science,Hard
+What is HTML?,HTML is the standard markup language for creating web pages.,web dev,Easy
+What is CSS?,CSS is used to style HTML elements.,web dev,Easy
+What is JavaScript?,A scripting language used for interactive web apps.,web dev,Easy
+What is a URL?,Uniform Resource Locator used to identify web resources.,web dev,Easy
+What is a web browser?,A software to access and view websites.,web dev,Easy
+What is a frontend?,Part of the website users interact with.,web dev,Easy
+What is a backend?,Server-side part handling business logic.,web dev,Easy
+What is HTTP?,Protocol for transferring web resources.,web dev,Easy
+What is a domain name?,Human-readable address of a website.,web dev,Easy
+What is hosting?,Storing website files on a server.,web dev,Easy
+What is React?,A JavaScript library for building UI components.,web dev,Medium
+What is a REST API?,APIs that conform to REST architectural principles.,web dev,Medium
+What is CORS?,Security feature to restrict cross-origin requests.,web dev,Medium
+What is AJAX?,Asynchronous JS and XML for dynamic content loading.,web dev,Medium
+What is responsive design?,Design approach to ensure mobile-friendly UI.,web dev,Medium
+What is SPA?,Single Page Application that dynamically updates content.,web dev,Medium
+What is JSON?,Lightweight format for data exchange.,web dev,Medium
+What is DOM?,Document Object Model represents page structure.,web dev,Medium
+What is a CDN?,Content Delivery Network for faster delivery of web assets.,web dev,Medium
+What is Bootstrap?,A CSS framework for responsive design.,web dev,Medium
+What is SSR?,Server-side rendering renders pages on the server.,web dev,Hard
+What is WebSockets?,Protocol for full-duplex communication channels.,web dev,Hard
+Explain OAuth 2.0.,Protocol for secure authorization.,web dev,Hard
+What is GraphQL?,Query language for APIs.,web dev,Hard
+What is PWA?,Progressive Web Apps that work offline.,web dev,Hard
+What are Service Workers?,Scripts enabling offline and caching support.,web dev,Hard
+What is lazy loading?,Deferring loading of offscreen content.,web dev,Hard
+What is a virtual DOM?,Lightweight copy of real DOM for performance.,web dev,Hard
+What is middleware?,Functions that run before route handlers.,web dev,Hard
+What is SSR vs CSR?,Comparison between server and client side rendering.,web dev,Hard
+What is Android?,An operating system for mobile devices.,app dev,Easy
+What is Android Studio?,Official IDE for Android development.,app dev,Easy
+What is an Intent in Android?,Messaging object used to request an action.,app dev,Easy
+What is an Activity?,A screen in an Android app.,app dev,Easy
+What is a Fragment?,Modular section of an Activity.,app dev,Easy
+What is iOS?,Apple's operating system for mobile devices.,app dev,Easy
+What is Flutter?,Google's UI toolkit for cross-platform apps.,app dev,Easy
+What is Dart?,Programming language used with Flutter.,app dev,Easy
+What is XML in Android?,Used to define UI layout.,app dev,Easy
+What is an Emulator?,A virtual mobile device for testing.,app dev,Easy
+What is the Android lifecycle?,Describes states an Activity goes through.,app dev,Medium
+What is MVVM?,Architecture that separates UI and logic.,app dev,Medium
+What is SQLite?,Lightweight database for mobile apps.,app dev,Medium
+What is Gradle?,Build automation tool for Android.,app dev,Medium
+What is Retrofit?,HTTP client for Android.,app dev,Medium
+What is RecyclerView?,Efficient way to display scrollable items.,app dev,Medium
+What is Jetpack Compose?,Modern toolkit for building native UI.,app dev,Medium
+What is Navigation Component?,Tool for managing app navigation.,app dev,Medium
+What is LiveData?,Data holder that is lifecycle-aware.,app dev,Medium
+What is ViewModel?,Stores UI-related data for lifecycle awareness.,app dev,Medium
+Explain AOT and JIT compilation in Flutter.,AOT compiles before runtime; JIT at runtime.,app dev,Hard
+What is dependency injection?,Design pattern for providing dependencies.,app dev,Hard
+Explain ProGuard.,Tool for code shrinking and obfuscation.,app dev,Hard
+What is Room DB?,SQLite abstraction for Android.,app dev,Hard
+What is Android NDK?,Enables native code in Android.,app dev,Hard
+What is WorkManager?,API for background work.,app dev,Hard
+Explain APK and AAB.,File formats for Android apps.,app dev,Hard
+What is app signing?,Authenticating the developer of an app.,app dev,Hard
+What is ANR?,App Not Responding error.,app dev,Hard
+What is Flutter plugin?,Code to access native functionality.,app dev,Hard
+What is DevOps?,A set of practices to automate software delivery.,devops,Easy
+What is CI/CD?,Automating integration and delivery of code.,devops,Easy
+What is Git?,Version control system.,devops,Easy
+What is GitHub?,Platform for hosting code repositories.,devops,Easy
+What is a repository?,A storage location for code.,devops,Easy
+What is a commit?,Saving changes in Git.,devops,Easy
+What is a branch?,A parallel version of the repository.,devops,Easy
+What is Docker?,Tool to create and manage containers.,devops,Easy
+What is a container?,"A lightweight, portable software environment.",devops,Easy
+What is Jenkins?,Automation server for CI/CD.,devops,Easy
+What is Kubernetes?,Container orchestration tool.,devops,Medium
+What is Helm?,Package manager for Kubernetes.,devops,Medium
+What is Terraform?,Infrastructure as code tool.,devops,Medium
+What is Ansible?,Automation tool for configuration management.,devops,Medium
+What is a pipeline?,Automated sequence of CI/CD steps.,devops,Medium
+What is YAML?,Human-readable configuration language.,devops,Medium
+What is load balancing?,Distributing traffic across servers.,devops,Medium
+What is monitoring?,Tracking system performance and health.,devops,Medium
+What is logging?,Recording system events.,devops,Medium
+What is an artifact?,Built package from CI/CD process.,devops,Medium
+What is blue-green deployment?,Strategy with two identical environments.,devops,Hard
+What is chaos engineering?,Testing by introducing failures.,devops,Hard
+What is canary deployment?,Gradual release to reduce risk.,devops,Hard
+What is observability?,Understanding system's internal states.,devops,Hard
+What is fault tolerance?,System’s ability to function during faults.,devops,Hard
+What is service mesh?,Manages service-to-service communication.,devops,Hard
+What is auto-scaling?,Dynamically adjusting resources.,devops,Hard
+What is rolling update?,Updating pods incrementally.,devops,Hard
+What is configuration drift?,Inconsistent system configurations.,devops,Hard
+What is secrets management?,Securely managing sensitive data.,devops,Hard
