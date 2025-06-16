@@ -343,17 +343,36 @@ export default function InterviewRecording({ question, questionNumber, totalQues
         clearInterval(intervalRef.current)
       }
     }
-  }, [])
-  useEffect(() => {
-    setTranscript(""); // Clear transcript
-    setTimeElapsed(0); // Reset timer
-    startTimeRef.current = performance.now(); // Reset timer base
+  }, [question._id])
+useEffect(() => {
+  setTranscript(""); // Clear transcript
+  setTimeElapsed(0); // Reset timer
+  startTimeRef.current = performance.now(); // Reset timer base
 
-    // 🧼 Clear video stream on question change to force re-binding
+  if (videoRef.current) {
+    videoRef.current.srcObject = null;
+  }
+
+  // ⏳ Add delay to ensure stream is ready before attaching
+  const timer = setTimeout(() => {
+    if (stream && videoRef.current && stream.getVideoTracks().length > 0) {
+      const videoOnlyStream = new MediaStream([stream.getVideoTracks()[0]]);
+      videoRef.current.srcObject = videoOnlyStream;
+      videoRef.current.onloadedmetadata = () => {
+        videoRef.current.play().catch((err) => console.error("Video play failed:", err));
+      };
+    }
+  }, 500); // Half-second delay to let media devices reinitialize
+
+  return () => {
+    clearTimeout(timer);
     if (videoRef.current) {
       videoRef.current.srcObject = null;
     }
-  }, [question._id]);
+  };
+}, [question._id]);
+
+
 
 
 
@@ -412,7 +431,7 @@ export default function InterviewRecording({ question, questionNumber, totalQues
         <Card className="relative overflow-hidden">
           <CardContent className="p-0">
             <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden">
-              {stream && stream.getVideoTracks().length > 0 ? (
+
                 <video
                   ref={videoRef}
                   autoPlay
@@ -420,31 +439,7 @@ export default function InterviewRecording({ question, questionNumber, totalQues
                   className="w-full h-full object-cover"
                   style={{ transform: "scaleX(-1)" }}
                 />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-white">
-                  <div className="text-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mx-auto mb-4 opacity-50"
-                    >
-                      <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                      <line x1="1" x2="23" y1="1" y2="23" />
-                    </svg>
-                    <p className="text-sm opacity-75">
-                      {mediaMode === "manual" ? "Manual Mode" : "Camera not available"}
-                    </p>
-                    <p className="text-xs opacity-50 mt-1">Continue with text input below</p>
-                  </div>
-                </div>
-              )}
+              
 
               {/* Recording indicator */}
               {isRecording && (

@@ -6,10 +6,9 @@ import ThreeDBackground from "./Components/ThreeDBackground";
 import InterviewSetup from "./Components/interview-setup";
 import InterviewRecording from "./Components/interview-recording";
 import EvaluationPage from "./Components/evaluation-page";
-import { Button } from "./Components/ui/Button";
+import { Button } from "@/components/ui/Button";
 import { v4 as uuidv4 } from "uuid";
-
-
+import AuthForm from "./Components/auth-form";
 
 export default function Home() {
   const [started, setStarted] = useState(false);
@@ -23,6 +22,9 @@ export default function Home() {
   const [responses, setResponses] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [sessionId] = useState(uuidv4());
+  const [authVisible, setAuthVisible] = useState(false);
+  const [authMode, setAuthMode] = useState("login");
+  const [user, setUser] = useState(null);
 
   const fetchQuestions = async (topic, difficulty, count) => {
     const response = await fetch(`http://localhost:8000/questions/${topic}/${difficulty}/${count}`);
@@ -42,31 +44,28 @@ export default function Home() {
     setInterviewStarted(true);
   };
 
- const handleQuestionResponse = async (response, timeSpent) => {
-  const currentQuestion = filteredQuestions[currentQuestionIndex];
-  const newResponse = {
-    questionId: currentQuestion._id,
-    question: currentQuestion.question,
-    response,
-    timeSpent,
+  const handleQuestionResponse = async (response, timeSpent) => {
+    const currentQuestion = filteredQuestions[currentQuestionIndex];
+    const newResponse = {
+      questionId: currentQuestion._id,
+      question: currentQuestion.question,
+      response,
+      timeSpent,
+    };
+
+    const updatedResponses = [...responses, newResponse];
+    setResponses(updatedResponses);
+
+    if (currentQuestionIndex < filteredQuestions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      const res = await fetch(`http://localhost:8000/evaluate-session/${sessionId}`, { method: "POST" });
+      const data = await res.json();
+      setResponses(data.results);
+      setInterviewCompleted(true);
+      setInterviewStarted(false);
+    }
   };
-
-  const updatedResponses = [...responses, newResponse];
-  setResponses(updatedResponses);
-
-  if (currentQuestionIndex < filteredQuestions.length - 1) {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-  } else {
-    // ✅ Evaluation logic
-    const res = await fetch(`http://localhost:8000/evaluate-session/${sessionId}`, { method: "POST" });
-    const data = await res.json();
-    setResponses(data.results); // overwrite with evaluated responses
-    setInterviewCompleted(true);
-    setInterviewStarted(false);
-  }
-};
-
-    
 
   const resetInterview = () => {
     setStarted(false);
@@ -89,6 +88,19 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-gray-50">
+      {authVisible && (
+        <div className="absolute inset-0 z-50 bg-white">
+          <AuthForm
+            onLogin={(userData) => {
+              setUser(userData);
+              setAuthVisible(false);
+              setStarted(true); // <-- triggers InterviewSetup
+            }}
+            defaultMode={authMode}
+          />
+        </div>
+      )}
+
       {!interviewStarted && !interviewCompleted && (
         <div className="fixed inset-0 z-0">
           <ThreeDBackground />
@@ -132,6 +144,14 @@ export default function Home() {
               </Button>
             </div>
           )
+        ) : started && !setupCompleted ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <InterviewSetup onComplete={handleSetupComplete} onBack={() => setStarted(false)} />
+          </motion.div>
         ) : (
           <div className="w-full max-w-4xl">
             <motion.div
@@ -147,39 +167,31 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {!started ? (
-              <motion.div className="flex justify-center my-12" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div className="flex justify-center gap-6 my-12">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
-                  onClick={() => setStarted(true)}
-                  className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-6 rounded-full text-xl font-medium"
+                  onClick={() => {
+                    setAuthVisible(true);
+                    setAuthMode("login");
+                  }}
+                  className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-full text-lg font-medium"
                 >
-                  <motion.span
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
-                    className="flex items-center"
-                  >
-                    Start Interview
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 ml-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </motion.span>
+                  Login
                 </Button>
               </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <InterviewSetup onComplete={handleSetupComplete} onBack={() => setStarted(false)} />
+
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  onClick={() => {
+                    setAuthVisible(true);
+                    setAuthMode("signup");
+                  }}
+                  className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-full text-lg font-medium"
+                >
+                  Signup
+                </Button>
               </motion.div>
-            )}
+            </div>
 
             {!started && (
               <motion.div
